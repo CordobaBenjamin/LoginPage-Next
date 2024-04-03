@@ -12,9 +12,7 @@ export const metadata: Metadata = {
 
 const IndexLayout = ({children}: {children: React.ReactNode}) => {
   return (
-    <html lang="en">
         <Hooks/>
-    </html>
   );
 };
 
