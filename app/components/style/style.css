@@ -10,3 +10,8 @@ label {
 input {
     width: 100%;
 }
+
+span {
+    color: tomato;
+    font-size: 2vh;
+}
