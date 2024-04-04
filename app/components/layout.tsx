@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Hooks from './hooks';
+import FormRoot from './formRoot';
 import { Inter } from 'next/font/google';
 import './style/style.css'
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const IndexLayout = ({children}: {children: React.ReactNode}) => {
   return (
-        <Hooks/>
+        <FormRoot/>
   );
 };
 

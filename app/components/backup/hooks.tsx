@@ -47,7 +47,7 @@ const Hooks = () => {
                     },
                 })} />
 
-                { errors.name && <span>{errors.name.message}</span> }
+                { errors.name && <span>{errors.name.message?.toString()}</span> }
                 
                {/* //! LAST NAME */}
 
@@ -69,7 +69,7 @@ const Hooks = () => {
                     },
                 })} />
                 
-                { errors.lastName && <span>{errors.lastName.message}</span> }
+                { errors.lastName && <span>{errors.lastName.message?.toString()}</span> }
 
             {/* //! eMail */}
 
@@ -115,7 +115,7 @@ const Hooks = () => {
                     }
                  })} />
 
-                { errors.password && <span>{errors.password.message}</span> }
+                { errors.password && <span>{errors.password.message?.toString()}</span> }
 
                 {/* //! CONFIRM PASSWORD */}
 
@@ -126,7 +126,7 @@ const Hooks = () => {
                     validate: value => value === watch ('password') || 'Both passwords must be the same.'
                  })} />
 
-                { errors.confirmPassword && <span>{errors.confirmPassword.message}</span> }
+                { errors.confirmPassword && <span>{errors.confirmPassword.message?.toString()}</span> }
 
                 {/* //! BIRTHDATE */}
 
@@ -142,7 +142,7 @@ const Hooks = () => {
                             if (age > 17) { return true } else { return "You need to be older than 18 years " };  
                     },})} />
 
-                {errors.birthdate && <span>{errors.birthdate.message}</span>}
+                {errors.birthdate && <span>{errors.birthdate.message?.toString()}</span>}
                
 
                 {/* //! COUNTRYS FORM */}
@@ -157,8 +157,16 @@ const Hooks = () => {
                                 <option value="ar"> Argentine </option>
                                 <option value="mx"> Mexico </option>
                                 <option value="jpn"> Japan </option>
+                                <option value="oth"> Other </option>
                                 
                 </select>
+
+                {
+                    watch('country') === 'oth' && (
+                <>
+                       <input type='Text' placeholder='Put your country and State/Province.'/> 
+
+                </>)},
 
                     {/* //! UNITED STATE FORM */}
 
