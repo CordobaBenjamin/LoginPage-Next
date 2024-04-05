@@ -6,10 +6,10 @@ export const Password  = () => {
 
     const { register, handleSubmit, formState: {errors}, watch } = useFormContext();
     return (
-      <>
-            <label htmlFor='password'> Password </label>
+      <div className='block m-2 mb-5'>
+            <label htmlFor='password' className='block'> Password </label>
 
-            <input id='password' type='password' placeholder='*****' {...register("password", {
+            <input id='password' type='password' placeholder='*****' className='block border-b-2 border-gray-400 rounded' {...register("password", {
                 required: {
                     value:true,
                     message: "Password is Required"
@@ -30,8 +30,8 @@ export const Password  = () => {
                 }
             })} />
 
-            { errors.password && <span>{errors.password.message?.toString()}</span> }
-      </>
+            { errors.password && <span className='text-red-400'>{errors.password.message?.toString()}</span> }
+      </div>
     )
   }
   

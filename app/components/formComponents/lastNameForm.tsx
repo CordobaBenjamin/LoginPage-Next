@@ -5,10 +5,10 @@ export const LastName = () => {
     const { register, formState: {errors} } = useFormContext();
 
     return (
-      <>
-            <label htmlFor='lastName'> Last Name </label>
+      <div className='block m-2 mb-5'>
+            <label htmlFor='lastName' className='block'> Last Name </label>
 
-            <input id='lastName' type='text' placeholder='Perez' {...register("lastName", {
+            <input id='lastName' type='text' placeholder='Perez' className='block border-b-2 border-gray-400 rounded' {...register("lastName", {
                 required: {
                     value: true,
                     message: " Last Name is required"
@@ -24,9 +24,9 @@ export const LastName = () => {
                 },
             })} />
 
-            { errors.lastName && <span>{errors.lastName.message?.toString()}</span> }
+            { errors.lastName && <span className='text-red-400'>{errors.lastName.message?.toString()}</span> }
 
-      </>
+      </div>
     );
   };
   

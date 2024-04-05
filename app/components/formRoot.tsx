@@ -18,22 +18,31 @@ const FormRoot = () => {
     });
 
     return (
-        <FormProvider {...methods}>
-            <form onSubmit={onSubmit} id='root' className='justify-center justify-items-start'>
-                <Name />
-                <LastName />
-                <Mail />
-                <Password />
-                <ConfirmPassword />
-                <Birthdate />
-                <Country />
-                <Terms />
+        <div className='flex justify-center items-center h-screen'> 
+            <div className='h-3/4 w-2/5 p-4  mx-auto shadow-2xl'> 
+                <FormProvider {...methods}>
+                    <form onSubmit={onSubmit} id='root' >
 
-                <button type='submit'>
-                    Aceptar
-                </button>
-            </form>
-        </FormProvider>
+                        <div className='flex mx-auto'>  
+                            <Name />
+                            <LastName />
+                        </div> 
+
+                        <Mail />
+                        <Password />
+                        <ConfirmPassword />
+                        <Birthdate />
+                        <Country />
+                        <Terms />
+
+                        <button type='submit'>
+                            Aceptar
+                        </button>
+
+                    </form>
+                </FormProvider>
+            </div>
+        </div>
     );
 };
 

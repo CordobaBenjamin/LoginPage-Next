@@ -1,16 +1,17 @@
 import { useFormContext } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
+import '../style/style.css'
 
 export const Name = () => {
 
 
-    const { register, formState: {errors}, watch } = useFormContext();
+    const { register, formState: {errors}} = useFormContext();
 
     return (
-      <>
-            <label htmlFor='name'> Name </label>
+      <div className='block m-2 mb-5'>
 
-            <input id='name' type='text' placeholder='Pepito' {...register("name", {
+            <label htmlFor='name' className='block'> Name </label>
+
+            <input id='name' type='text' placeholder='Pepito' className='block border-b-2 border-gray-400 rounded' {...register("name", {
                 required: {
                     value: true,
                     message: "Name is required"
@@ -19,7 +20,6 @@ export const Name = () => {
                     value: 2,
                     message: "The name must be at least 3 characters or more"
                 },
-
                 maxLength: {
                     value: 12,
                     message: "Just put the first name",
@@ -30,9 +30,9 @@ export const Name = () => {
             
     
 
-            {errors.name && <span> {errors.name.message?.toString()} </span> }
+            {errors.name && <span className='text-red-400'> {errors.name.message?.toString()} </span> }
 
-      </>
+      </div>
     )
   }
   

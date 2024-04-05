@@ -5,10 +5,10 @@ export const Country = () => {
     const { register,formState: {errors}, watch } = useFormContext();
 
     return (
-      <>
-            <label htmlFor='country'> Country </label>
+      <div className='block m-2 mb-5'>
+            <label htmlFor='country' className='block'> Country </label>
 
-            <select id='country' {...register("country", {required: true, })}>
+            <select id='country' className='mb-5 block border-b-2 border-gray-400 rounded'{...register("country", {required: true, })}>
 
                 {errors.oth && <span>Please, put your country.</span>}
 
@@ -26,8 +26,8 @@ export const Country = () => {
                 {
                     watch('country') === 'oth' && (
                 <>
-                    <label htmlFor='oth'> Other </label>
-                    <input id='oth' type='Text' placeholder='Put your country'/> 
+                    <label htmlFor='oth' className='block'> Other </label>
+                    <input id='oth' type='Text' className='block border-b-2 border-gray-400 rounded' placeholder='Put your country'/> 
 
                 </>)}
 
@@ -37,9 +37,9 @@ export const Country = () => {
                 {
                     watch('country') === 'eeuu' && (
                 <>
-                    <label htmlFor='state'> State </label>
+                    <label htmlFor='state' className='block'> State </label>
 
-                    <select {...register("state", { required: true, })}>
+                    <select  className='block border-b-2 border-gray-400 rounded' {...register("state", { required: true, })}>
 
                         { errors.country && <span>State Required</span> }
 
@@ -57,9 +57,9 @@ export const Country = () => {
                 {
                     watch('country') === 'mx' && (
                 <>
-                    <label htmlFor='state'> State </label>
+                    <label htmlFor='state' className='block'> State </label>
 
-                    <select id='state' {...register("state", { required: true, })}>
+                    <select id='state' className='block border-b-2 border-gray-400 rounded'  {...register("state", { required: true, })}>
 
                         { errors.country && <span>State Required</span> }
                         
@@ -77,9 +77,9 @@ export const Country = () => {
                 {
                     watch('country') === 'ar' && (
                 <>
-                    <label htmlFor='province'> Province </label>
+                    <label htmlFor='province' className='block'> Province </label>
 
-                    <select id='province' {...register("province", { required: true, })}>
+                    <select id='province'  className='block border-b-2 border-gray-400 rounded' {...register("province", { required: true, })}>
 
                         { errors.country && <span>Province Required</span> }
 
@@ -97,9 +97,9 @@ export const Country = () => {
                 {
                     watch('country') === 'jpn' && (
                 <>
-                    <label htmlFor='district'> District </label>
+                    <label htmlFor='district' className='block'> District </label>
 
-                    <select id='district' {...register("district", { required: true, })}>
+                    <select id='district'  className='block border-b-2 border-gray-400 rounded' {...register("district", { required: true, })}>
 
                         { errors.country && <span>District Required</span> }
 
@@ -117,9 +117,9 @@ export const Country = () => {
                 {
                     watch('country') === 'es' && (
                 <>
-                    <label htmlFor='community'> Autonomous community </label>
+                    <label htmlFor='community' className='block'> Autonomous community </label>
 
-                    <select id='community' {...register("community", { required: true, })}>
+                    <select id='community'  className='block border-b-2 border-gray-400 rounded' {...register("community", { required: true, })}>
 
                         { errors.country && <span>Autonomous community Required</span> }
 
@@ -132,7 +132,7 @@ export const Country = () => {
                     </select>
                 </> )}
 
-            </>
+            </div>
             )
   }
   
