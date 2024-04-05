@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form';
-import '../style/style.css'
+import '../../global.css'
 
 export const Name = () => {
 

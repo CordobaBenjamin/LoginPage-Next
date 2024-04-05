@@ -1,11 +1,12 @@
+import HomeLayout from '@/app/components/homeLayout/layout'
 import React from 'react'
-import IndexLayout from '@/app/components/indexLayout/layout'
+
 
 const page = () => {
   return (
-    <IndexLayout>
+    <HomeLayout>
         {null}
-    </IndexLayout>
+    </HomeLayout>
 
   )
 }
