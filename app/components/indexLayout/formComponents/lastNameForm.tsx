@@ -8,7 +8,7 @@ export const LastName = () => {
       <div className='block m-2 mb-5'>
             <label htmlFor='lastName' className='block'> Last Name </label>
 
-            <input id='lastName' type='text' placeholder='Perez' className='block border-b-2 border-gray-400 rounded' {...register("lastName", {
+            <input id='lastName' type='text' placeholder='Perez' className='block border-b-2 border-gray-400 rounded bg-transparent' {...register("lastName", {
                 required: {
                     value: true,
                     message: " Last Name is required"

@@ -5,11 +5,11 @@ export const Mail = () => {
     const { register, formState: {errors}} = useFormContext();
 
   return (
-    <div className='block m-2 mb-5'>
+    <div className='block m-2 mb-5 h-2/5'>
 
-        <label htmlFor='eMail' className='block'> eMail </label>
-
-        <input id='eMail' type='email' placeholder='PerezPepito@mail.com'  className='w-2/5 block border-b-2 border-gray-400 rounded' {...register("eMail", {
+        <label htmlFor='eMail' className='block'> eMail Adress </label>
+        <div > 
+        <input id='eMail' type='email' placeholder='PerezPepito@mail.com'  className='w-full block border-b-2 border-gray-400 rounded bg-transparent' {...register("eMail", {
 
             required: {
             value: true,
@@ -23,6 +23,7 @@ export const Mail = () => {
         })} />
 
         { errors.eMail && <span className='text-red-400'>{errors.eMail.message?.toString()}</span> }
+        </div>
 
     </div>
   )

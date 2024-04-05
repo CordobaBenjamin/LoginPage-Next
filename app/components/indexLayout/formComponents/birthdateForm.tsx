@@ -8,7 +8,7 @@ export const Birthdate  = () => {
       <div className='block m-2 mb-5'>
         <label htmlFor='birthdate' className='block'> Birthdate </label>
 
-        <input id='birthdate' type='date' className='block border-b-2 border-gray-400 rounded' {...register("birthdate", {
+        <input id='birthdate' type='date' className='block border-b-2 border-gray-400 rounded bg-transparent' {...register("birthdate", {
             required: { value:true, message: "Birthday is Required" }, 
             validate: (value) => {
                     const birthday = new Date(value);

@@ -8,7 +8,7 @@ export const Country = () => {
       <div className='block m-2 mb-5'>
             <label htmlFor='country' className='block'> Country </label>
 
-            <select id='country' className='mb-5 block border-b-2 border-gray-400 rounded'{...register("country", {required: true, })}>
+            <select id='country' className='mb-5 block border-b-2 border-gray-400 rounded bg-transparent'{...register("country", {required: true, })}>
 
                 {errors.oth && <span>Please, put your country.</span>}
 
@@ -27,7 +27,7 @@ export const Country = () => {
                     watch('country') === 'oth' && (
                 <>
                     <label htmlFor='oth' className='block'> Other </label>
-                    <input id='oth' type='Text' className='block border-b-2 border-gray-400 rounded' placeholder='Put your country'/> 
+                    <input id='oth' type='Text' className='block border-b-2 border-gray-400 rounded bg-transparent' placeholder='Put your country'/> 
 
                 </>)}
 
@@ -39,7 +39,7 @@ export const Country = () => {
                 <>
                     <label htmlFor='state' className='block'> State </label>
 
-                    <select  className='block border-b-2 border-gray-400 rounded' {...register("state", { required: true, })}>
+                    <select  className='block border-b-2 border-gray-400 rounded bg-transparent' {...register("state", { required: true, })}>
 
                         { errors.country && <span>State Required</span> }
 
@@ -59,7 +59,7 @@ export const Country = () => {
                 <>
                     <label htmlFor='state' className='block'> State </label>
 
-                    <select id='state' className='block border-b-2 border-gray-400 rounded'  {...register("state", { required: true, })}>
+                    <select id='state' className='block border-b-2 border-gray-400 rounded bg-transparent'  {...register("state", { required: true, })}>
 
                         { errors.country && <span>State Required</span> }
                         
@@ -79,7 +79,7 @@ export const Country = () => {
                 <>
                     <label htmlFor='province' className='block'> Province </label>
 
-                    <select id='province'  className='block border-b-2 border-gray-400 rounded' {...register("province", { required: true, })}>
+                    <select id='province'  className='block border-b-2 border-gray-400 rounded bg-transparent' {...register("province", { required: true, })}>
 
                         { errors.country && <span>Province Required</span> }
 
@@ -99,7 +99,7 @@ export const Country = () => {
                 <>
                     <label htmlFor='district' className='block'> District </label>
 
-                    <select id='district'  className='block border-b-2 border-gray-400 rounded' {...register("district", { required: true, })}>
+                    <select id='district'  className='block border-b-2 border-gray-400 rounded bg-transparent' {...register("district", { required: true, })}>
 
                         { errors.country && <span>District Required</span> }
 
@@ -119,7 +119,7 @@ export const Country = () => {
                 <>
                     <label htmlFor='community' className='block'> Autonomous community </label>
 
-                    <select id='community'  className='block border-b-2 border-gray-400 rounded' {...register("community", { required: true, })}>
+                    <select id='community'  className='block border-b-2 border-gray-400 rounded bg-transparent' {...register("community", { required: true, })}>
 
                         { errors.country && <span>Autonomous community Required</span> }
 

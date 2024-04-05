@@ -11,7 +11,7 @@ export const Name = () => {
 
             <label htmlFor='name' className='block'> Name </label>
 
-            <input id='name' type='text' placeholder='Pepito' className='block border-b-2 border-gray-400 rounded' {...register("name", {
+            <input id='name' type='text' placeholder='Pepito' className='block border-b-2 border-gray-400 rounded bg-transparent' {...register("name", {
                 required: {
                     value: true,
                     message: "Name is required"
@@ -26,9 +26,6 @@ export const Name = () => {
                 },
                 
             })} />
-
-            
-    
 
             {errors.name && <span className='text-red-400'> {errors.name.message?.toString()} </span> }
 

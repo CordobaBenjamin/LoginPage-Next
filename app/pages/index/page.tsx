@@ -1,5 +1,5 @@
 import React from 'react'
-import IndexLayout from '@/app/components/indexLayout/layout'
+import IndexLayout from '@/app/components/indexLayout/stepOne/layout'
 
 const page = () => {
   return (
