@@ -5,7 +5,7 @@ export const Mail = () => {
     const { register, formState: {errors}} = useFormContext();
 
   return (
-    <div className='block m-2 mb-5 h-2/5'>
+    <div className='block m-2 mb-5'>
 
         <label htmlFor='eMail' className='block'> eMail Adress </label>
         <div > 

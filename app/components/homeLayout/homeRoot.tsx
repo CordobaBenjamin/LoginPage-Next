@@ -22,7 +22,7 @@ const Home: React.FC = () => {
                     <h2 className='text-green-500 text-2xl md:text-2xl'> Please select one of the options below</h2>
 
                     <div className="w-2/3 sm:w-1/3">
-                        <Link href="../pages/index">
+                        <Link href="../pages/index/first-step">
                         <button className="w-full rounded border-2 border-gray-400 shadow p-2 mb-2 hover:border-green-600  transition-all duration-500 ease-in-out hover:bg-gray-100 hover:p-2.5"
                         >
                         <span className="text-xl ">
@@ -42,7 +42,7 @@ const Home: React.FC = () => {
 
           
                     <div className="w-2/3 sm:w-1/3">
-                    <Link href="../pages/index">
+                    <Link href="../pages/index/first-step">
                         <button className="w-full rounded border-2 border-gray-400 shadow p-2 mb-2 hover:border-green-600  transition-all duration-500 ease-in-out hover:bg-gray-100 hover:p-2.5"
                         >
                         <span className="text-xl ">

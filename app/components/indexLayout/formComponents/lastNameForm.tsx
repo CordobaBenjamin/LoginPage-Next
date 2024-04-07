@@ -5,7 +5,7 @@ export const LastName = () => {
     const { register, formState: {errors} } = useFormContext();
 
     return (
-      <div className='block m-2 mb-5'>
+      <div className='block m-2 mb-5 max-w-min'>
             <label htmlFor='lastName' className='block'> Last Name </label>
 
             <input id='lastName' type='text' placeholder='Perez' className='block border-b-2 border-gray-400 rounded bg-transparent' {...register("lastName", {
@@ -20,7 +20,7 @@ export const LastName = () => {
 
                 maxLength: {
                     value: 12,
-                    message: "Just put the Last name",
+                    message: "Just your Last name",
                 },
             })} />
 
