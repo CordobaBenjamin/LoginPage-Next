@@ -2,8 +2,8 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { addOrUpdateAccounts } from "../../accountDataBase/dataBase";
-import Password from "../formComponents/password";
-import Mail from "../formComponents/eMailForm";
+import Password from "../IndexFormComponents/passwordForm";
+import Mail from "../IndexFormComponents/eMailForm";
 
 const SecondStep = () => {
   let userFromLocalStorage = localStorage.getItem("User");

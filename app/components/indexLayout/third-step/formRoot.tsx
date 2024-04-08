@@ -1,7 +1,7 @@
 'use client'
 import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import Terms from '../formComponents/terms&condition';
+import Terms from '../IndexFormComponents/terms&conditionForm';
 import { AccountDataBase } from '../../accountDataBase/dataBase';
 
 const ThirdStep = () => {

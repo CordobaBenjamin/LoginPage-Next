@@ -2,8 +2,8 @@ import React from "react";
 import FirstStep from "../indexLayout/first-step/formRoot";
 import SecondStep from "../indexLayout/second-step/formRoot";
 import ThirdStep from "../indexLayout/third-step/formRoot";
-import LastName from "../indexLayout/formComponents/lastNameForm";
-import Name from "../indexLayout/formComponents/nameForm";
+import FullName from "../indexLayout/IndexFormComponents/FullNameForm";
+import Username from "../indexLayout/IndexFormComponents/userForm";
 
 interface Accounts {
   name?: string;

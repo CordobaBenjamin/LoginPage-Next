@@ -1,28 +1,39 @@
 "use client";
 import { FormProvider, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import Username from "../IndexFormComponents/userForm";
-import FullName from "../IndexFormComponents/FullNameForm";
-import Birthdate from "../IndexFormComponents/birthdateForm";
-import Country from "../IndexFormComponents/countryForm";
-import { addOrUpdateAccounts } from "../../accountDataBase/dataBase";
+import { redirect, useRouter } from "next/navigation";
+import UsernameLoggin from "../logginComponents/userLogginForm";
 
-const FirstStep = () => {
-  let User: string;
-  const router = useRouter();
+const LogginLayout = () => {
+
   const methods = useForm();
+  const router = useRouter();
 
   const onSubmitNext = methods.handleSubmit((data) => {
     console.log("Form data:", data);
-    User = data.name;
-    addOrUpdateAccounts(User, data);
-    localStorage.setItem("User", User);
-    router.push("./second-step");
+    let userFromLocalStorage = localStorage.getItem("User");
+
+    if (data.Username === userFromLocalStorage) {
+      router.push("/pages/loggin/second-step");
+
+    } else {
+      alert("No username found")
+      // const spanErrorElement = document.getElementById("spanError")
+
+      // if (spanErrorElement) {
+      //   const newErrorSpan = document.createElement("h5");
+      //   newErrorSpan.textContent = "No username found";
+      //   newErrorSpan.classList.add("text-red-400");
+
+      //   spanErrorElement.innerHTML = ''; // Clear any existing content
+      //   spanErrorElement.appendChild(newErrorSpan);
+      // }
+ 
+    }
+
   });
 
   const buttonPrevious = () => {
-    router.push("../home");
+    router.push("/pages/home");
   };
 
   const buttonNext = () => {
@@ -43,13 +54,13 @@ const FirstStep = () => {
                 id="second"
                 className="block text-6xl md:text-6xl font-bold text-transparent bg-gradient-to-r from-green-400 to-gray-300 bg-clip-text"
               >
-                Create Account
+                Loggin Account
               </span>{" "}
             </span>
           </h1>
           <h1 className="text-gray-600 text-2xl">
             {" "}
-            Please complete the spaces with your information{" "}
+            Remember the upper and lower case in Username{" "}
           </h1>
           <h5 className="text-gray-600 text-xs">
             The data is end-to-end encrypted, and no worker will ask you for
@@ -57,24 +68,22 @@ const FirstStep = () => {
           </h5>
         </div>
 
-        <div className="flex justify-center my-16">
+        <div className="flex justify-center h-3/6 w-full mt-14">
           <FormProvider {...methods}>
-            <form onSubmit={buttonNext} id="root" className="">
-              <div className="flex mx-auto">
-                <Username />
-                <FullName />
-              </div>
+            <form onSubmit={buttonNext} id="root" className="w-full">
+              
+              <UsernameLoggin />
+              <div id="spanError">
 
-              <Birthdate />
-              <Country />
+              </div>
 
               <div className="flex justify-center">
                 <button
                   type="button"
                   onClick={buttonNext}
-                  className="border-2 px-2 shadow-xl rounded-md border-green-400 flex hover:bg-green-50 transition-all ease-in-out duration-500 hover:px-4 mb-4"
+                  className="border-2 py-2 px-6 shadow-xl mb-6 rounded-md border-green-400 flex hover:bg-green-50 transition-all ease-in-out duration-500 hover:px-12"
                 >
-                  Next Step
+                  Loggin Account
                 </button>
               </div>
 
@@ -82,7 +91,7 @@ const FirstStep = () => {
                 <button
                   type="button"
                   onClick={buttonPrevious}
-                  className="border-2 px-2 shadow-xl rounded-md border-green-400 flex hover:bg-green-50 transition-all ease-in-out duration-500 hover:px-4"
+                  className="border-2 py-2 px-14 placeholder:shadow-xl rounded-md border-green-400 flex hover:bg-green-50 transition-all ease-in-out duration-500 hover:px-20"
                 >
                   Home
                 </button>
@@ -95,5 +104,4 @@ const FirstStep = () => {
   );
 };
 
-export default FirstStep;
-// export {User};
+export default LogginLayout;

@@ -34,7 +34,7 @@ const Home: React.FC = () => {
           </div>
 
           <div className="w-2/3 sm:w-1/3">
-            <Link href="../pages/loggin">
+            <Link href="../pages/loggin/first-step">
               <button className="w-full rounded border-2 border-gray-400 shadow p-2 mb-2 hover:border-green-600  transition-all duration-500 ease-in-out hover:bg-gray-100 hover:p-2.5">
                 <span className="text-xl ">Loggin Account</span>
               </button>

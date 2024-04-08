@@ -1,12 +1,11 @@
-import SecondIndexLayout from '@/app/components/indexLayout/second-step/layout';
 import React from 'react'
-
+import LogginLayout from '@/app/components/logginLayout/layout';
 
 const Page = () => {
   return (
-    <SecondIndexLayout>
+    <LogginLayout>
         {null}
-    </SecondIndexLayout>
+    </LogginLayout>
 
   )
 };

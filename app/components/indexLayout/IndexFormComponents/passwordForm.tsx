@@ -3,7 +3,6 @@ import { useFormContext } from "react-hook-form";
 export const Password = () => {
   const {
     register,
-    handleSubmit,
     formState: { errors },
     watch,
   } = useFormContext();
