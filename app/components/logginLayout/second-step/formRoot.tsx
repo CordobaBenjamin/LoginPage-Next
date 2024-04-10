@@ -2,6 +2,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { logginUser } from "../first-step/formRoot";
 import MailLoggin from "../logginComponents/eMailLogginForm";
 import PasswordLoggin from "../logginComponents/passwordLogginForm";
 import { decrypt_fn } from "../../accountDataBase/dataBase";
@@ -13,8 +14,7 @@ const LogginLayout = () => {
   const [verifyCounter, setVerifyCounter] = useState<number>(0);
 
   const onSubmitNext = methods.handleSubmit((data) => {
-    let userFromLocalStorage = localStorage.getItem("User");
-
+    let userFromLocalStorage = localStorage.getItem(logginUser);
     let userObjectFromLocalStorage = localStorage.getItem(
       `${userFromLocalStorage}`
     );
@@ -54,10 +54,10 @@ const LogginLayout = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-gray-300 to-green-100">
-      <div className="h-3/4 w-2/5 p-4  mx-auto shadow-2xl bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-blue-200 to-green-200 animate-gradient-move">
+      <div className="h-3/4 w-2/5 p-4  mx-auto shadow-2xl shadow-blue-200 bg-gray-100">
         <div className="text-center">
-          <h1 className="text-6xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-green-400 to-gray-300 bg-clip-text relative inline-block p-4">
+          <h1 className="text-6xl md:text-6xl font-bold text-transparent bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text relative inline-block p-4">
             <span
               id="first"
               className="text-black italic text-3xl md:text-3xl  inline-block"
@@ -65,7 +65,7 @@ const LogginLayout = () => {
               Cordoba Market!
               <span
                 id="second"
-                className="block text-6xl md:text-6xl font-bold text-transparent bg-gradient-to-r from-green-400 to-gray-300 bg-clip-text"
+                className="block text-6xl md:text-6xl font-bold text-transparent bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text"
               >
                 Loggin Account
               </span>{" "}

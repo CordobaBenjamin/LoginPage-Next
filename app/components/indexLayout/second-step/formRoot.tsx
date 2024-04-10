@@ -5,11 +5,14 @@ import {
   addOrUpdateAccounts,
   encrypted_fn,
 } from "../../accountDataBase/dataBase";
+import { User } from "../first-step/formRoot";
 import Password from "../IndexFormComponents/passwordForm";
 import Mail from "../IndexFormComponents/eMailForm";
 
+console.log(User);
+
 const SecondStep = () => {
-  let userFromLocalStorage = localStorage.getItem("User");
+  let userFromLocalStorage = localStorage.getItem(User);
   let AES6: string;
   let AES7: string;
   const methods = useForm();
@@ -26,14 +29,18 @@ const SecondStep = () => {
     router.push("./third-step");
   });
 
-  const buttonPrevious = () => {router.push("./first-step");};
-  const buttonNext = () => {onSubmitNext();};
+  const buttonPrevious = () => {
+    router.push("./first-step");
+  };
+  const buttonNext = () => {
+    onSubmitNext();
+  };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-gray-300 to-green-100">
-      <div className="h-3/4 w-2/5 p-4  mx-auto shadow-2xl bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-blue-200 to-green-200 animate-gradient-move">
+      <div className="h-3/4 w-2/5 p-4  mx-auto shadow-2xl shadow-blue-200 bg-gray-100">
         <div className="text-center">
-          <h1 className="text-6xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-green-400 to-gray-300 bg-clip-text relative inline-block p-4">
+          <h1 className="text-6xl md:text-6xl font-bold text-transparent bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text relative inline-block p-4">
             <span
               id="first"
               className="text-black italic text-3xl md:text-3xl  inline-block"
@@ -41,7 +48,7 @@ const SecondStep = () => {
               Cordoba Market!
               <span
                 id="second"
-                className="block text-6xl md:text-6xl font-bold text-transparent bg-gradient-to-r from-green-400 to-gray-300 bg-clip-text"
+                className="block text-6xl md:text-6xl font-bold text-transparent bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text"
               >
                 Create Account
               </span>{" "}

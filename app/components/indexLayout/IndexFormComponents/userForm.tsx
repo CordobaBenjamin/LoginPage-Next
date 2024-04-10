@@ -9,7 +9,7 @@ export const Username = () => {
 
   return (
     <div className="block m-2 mb-5 max-w-min">
-      <label htmlFor="name" className="block">
+      <label htmlFor="userName" className="block">
         Username
       </label>
 
@@ -18,7 +18,7 @@ export const Username = () => {
         type="text"
         placeholder="TheUltimatePepito"
         className="block border-b-2 border-gray-400 rounded bg-transparent"
-        {...register("name", {
+        {...register("userName", {
           required: {
             value: true,
             message: "User is required",
@@ -32,16 +32,17 @@ export const Username = () => {
             message: "The Username cannot be more than 12 characters.",
           },
           pattern: {
-            value: /^[a-zA-Z]+$/, 
-            message: "The Username can only contain letters, remember that it is case sensitive.",
+            value: /^[a-zA-Z]+$/,
+            message:
+              "The Username can only contain letters, remember that it is case sensitive.",
           },
         })}
       />
 
-      {errors.name && (
+      {errors.userName && (
         <span className="text-red-400">
           {" "}
-          {errors.name.message?.toString()}{" "}
+          {errors.userName.message?.toString()}{" "}
         </span>
       )}
     </div>
