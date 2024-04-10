@@ -2,40 +2,23 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { redirect, useRouter } from "next/navigation";
 import UsernameLoggin from "../logginComponents/userLogginForm";
+import { decrypt_fn, encrypted_fn } from "../../accountDataBase/dataBase";
 
 const LogginLayout = () => {
-
+  let AES_logginData:string;
   const methods = useForm();
   const router = useRouter();
 
   const onSubmitNext = methods.handleSubmit((data) => {
-    console.log("Form data:", data);
     let userFromLocalStorage = localStorage.getItem("User");
-
-    if (data.Username === userFromLocalStorage) {
-      router.push("/pages/loggin/second-step");
-
-    } else {
-      alert("No username found")
-      // const spanErrorElement = document.getElementById("spanError")
-
-      // if (spanErrorElement) {
-      //   const newErrorSpan = document.createElement("h5");
-      //   newErrorSpan.textContent = "No username found";
-      //   newErrorSpan.classList.add("text-red-400");
-
-      //   spanErrorElement.innerHTML = ''; // Clear any existing content
-      //   spanErrorElement.appendChild(newErrorSpan);
-      // }
- 
-    }
-
+    if (userFromLocalStorage !== null) {
+      let decrypt_AES_logginUser = decrypt_fn(userFromLocalStorage)
+      if (decrypt_AES_logginUser === data.Username) {router.push("/pages/loggin/second-step"); } else {alert("No username found")}
+    };
   });
-
   const buttonPrevious = () => {
     router.push("/pages/home");
   };
-
   const buttonNext = () => {
     onSubmitNext();
   };

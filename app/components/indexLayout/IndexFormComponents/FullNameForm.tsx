@@ -22,9 +22,13 @@ export const FullName = () => {
             value: true,
             message: "Name is required",
           },
-          minLength: {
-            value: 5,
+          pattern: {
+            value: /^[A-Za-z]+\s[A-Za-z]+$/,
             message: "You need to put your First and Last name",
+          },
+          minLength: {
+            value: 3,
+            message: "Name is required",
           },
           maxLength: {
             value: 20,

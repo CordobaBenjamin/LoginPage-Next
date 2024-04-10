@@ -4,12 +4,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import MailLoggin from "../logginComponents/eMailLogginForm";
 import PasswordLoggin from "../logginComponents/passwordLogginForm";
+import { decrypt_fn } from "../../accountDataBase/dataBase";
 
 const LogginLayout = () => {
   const methods = useForm();
   const router = useRouter();
 
-  const [verifyCounter, setVerifyCounter] = useState<number>(0)
+  const [verifyCounter, setVerifyCounter] = useState<number>(0);
 
   const onSubmitNext = methods.handleSubmit((data) => {
     let userFromLocalStorage = localStorage.getItem("User");
@@ -18,45 +19,43 @@ const LogginLayout = () => {
       `${userFromLocalStorage}`
     );
 
-      if (userObjectFromLocalStorage !== null) {
-        const logginData = JSON.parse(userObjectFromLocalStorage);
-        const { eMail, password } = logginData;
-        console.log("Correct", verifyCounter);
+    if (userObjectFromLocalStorage !== null) {
+      let decrypt_AES_logginData = decrypt_fn(userObjectFromLocalStorage);
+      const logginData = JSON.parse(decrypt_AES_logginData);
+      const { AES6, AES7 } = logginData;
 
-        if (data.eMail == eMail) {
-          setVerifyCounter((verifyCounter) => verifyCounter + 1)
-          console.log("eMailCorrect", verifyCounter);
+      let decrypt_AES6_logginData = decrypt_fn(AES6);
+      let decrypt_AES7_logginData = decrypt_fn(AES7);
 
-        } else {
-          setVerifyCounter((verifyCounter) => verifyCounter - 1)
-          console.log("eMailWrong", verifyCounter);
-          alert("eMail Wrong");
-        }
+      console.log(AES7);
+      console.log(decrypt_AES7_logginData);
 
-        if (data.password == password) {
-          setVerifyCounter((verifyCounter) => verifyCounter + 1)
-          console.log("PasswordCorrect", verifyCounter);
+      console.log("Correct", verifyCounter);
 
-        } else {
-          setVerifyCounter((verifyCounter) => verifyCounter - 1)
-          console.log("PasswordWrong", verifyCounter);
-          alert("Password Wrong");
-        }
+      if (data.eMail == decrypt_AES6_logginData) {
+        setVerifyCounter((verifyCounter) => verifyCounter + 1);
+        console.log("eMailCorrect", verifyCounter);
+      } else {
+        setVerifyCounter((verifyCounter) => verifyCounter - 1);
+        console.log("eMailWrong", verifyCounter);
+        alert("eMail Wrong");
+      }
 
-        if (verifyCounter === 2) {
-          alert("Account has been create sucesfully");
-          console.log("CorrectVerify", verifyCounter);
-        } 
+      if (data.password == decrypt_AES7_logginData) {
+        setVerifyCounter((verifyCounter) => verifyCounter + 1);
+        console.log("PasswordCorrect", verifyCounter);
+      } else {
+        setVerifyCounter((verifyCounter) => verifyCounter - 1);
+        console.log("PasswordWrong", verifyCounter);
+        alert("Password Wrong");
+      }
 
-      } 
+      if (verifyCounter === 2) {
+        alert("Account has been create sucesfully");
+        console.log("CorrectVerify", verifyCounter);
+      }
+    }
 
-    // if (data.Username === userFromLocalStorage) {
-    //   router.push("/pages/home");
-
-    // } else {
-    //   alert("No username found")
-
-    // }
   });
 
   const buttonPrevious = () => {

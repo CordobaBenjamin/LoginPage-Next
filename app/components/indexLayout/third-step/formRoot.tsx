@@ -2,7 +2,7 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import Terms from '../IndexFormComponents/terms&conditionForm';
-import { AccountDataBase } from '../../accountDataBase/dataBase';
+import { AccountDataBase, encrypted_fn } from '../../accountDataBase/dataBase';
 
 const ThirdStep = () => {
 
@@ -19,7 +19,8 @@ const ThirdStep = () => {
             if (userFromLocalStorage !== null) {
                 let AccountCreated = AccountDataBase[userFromLocalStorage]
                 const jsonAccountDate = JSON.stringify(AccountCreated)
-                localStorage.setItem(userFromLocalStorage, jsonAccountDate)
+                let encrypted_jsonAccountDate = encrypted_fn(jsonAccountDate)
+                localStorage.setItem(userFromLocalStorage, encrypted_jsonAccountDate)
             }
         }
 

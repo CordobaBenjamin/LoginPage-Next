@@ -1,19 +1,24 @@
 "use client";
 import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { addOrUpdateAccounts } from "../../accountDataBase/dataBase";
-import Password from "../IndexFormComponents/passwordForm";
+import { addOrUpdateAccounts, encrypted_fn } from "../../accountDataBase/dataBase";
+import Password from '../IndexFormComponents/passwordForm';
 import Mail from "../IndexFormComponents/eMailForm";
 
 const SecondStep = () => {
   let userFromLocalStorage = localStorage.getItem("User");
+  let AES6:string;
+  let AES7:string;
   const methods = useForm();
   const router = useRouter();
 
   const onSubmitNext = methods.handleSubmit((data) => {
     console.log("Form data:", data);
+    AES6 = encrypted_fn(data.eMail)
+    AES7 = encrypted_fn(data.password)
+    let AES_data: any = {AES6, AES7}
     if (userFromLocalStorage !== null) {
-      addOrUpdateAccounts(userFromLocalStorage, data);
+      addOrUpdateAccounts(userFromLocalStorage, AES_data);
     }
     router.push("./third-step");
   });

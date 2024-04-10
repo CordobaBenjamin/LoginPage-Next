@@ -1,9 +1,24 @@
 import React from "react";
-import FirstStep from "../indexLayout/first-step/formRoot";
-import SecondStep from "../indexLayout/second-step/formRoot";
-import ThirdStep from "../indexLayout/third-step/formRoot";
-import FullName from "../indexLayout/IndexFormComponents/FullNameForm";
-import Username from "../indexLayout/IndexFormComponents/userForm";
+import crypto from "crypto";
+import { FieldValue } from "react-hook-form";
+var CryptoJS = require("crypto-js");
+const fs = require("fs");
+
+//! Función para generar una clave secreta de 16 bytes (128 bits) de manera segura
+function generateSecretKey(): Buffer {return crypto.randomBytes(16); }
+//! Ejemplo de uso
+const keyCreated = generateSecretKey();
+//! Forma de ver la clave generada
+// console.log('Clave secreta generada (segura):', keyCreated.toString('hex'));
+
+//! La clave creada se guarda en '.env.local' y de esta forma es traida bajo el nombre secretKey.
+const secretKey = "130179cb6220f209656ad620fcd5003"
+//! Funcion que recibe el parametro data y lo encripta en sistema AES con la key 16 bits.
+export const encrypted_fn = (data:string) => {return CryptoJS.AES.encrypt(data, secretKey).toString();};
+//! Funcion que recibre el parametro encriptado y lo desencripta en string.
+export const decrypt_fn = (encrypted: string): string => {const bytes = CryptoJS.AES.decrypt(encrypted, secretKey);return bytes.toString(CryptoJS.enc.Utf8);}; 
+
+
 
 interface Accounts {
   name?: string;

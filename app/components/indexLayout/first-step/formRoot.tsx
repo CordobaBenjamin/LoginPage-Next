@@ -1,23 +1,36 @@
 "use client";
+
 import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { encrypted_fn } from "../../accountDataBase/dataBase";
+import { decrypt_fn } from "../../accountDataBase/dataBase";
+import { addOrUpdateAccounts } from "../../accountDataBase/dataBase";
 import Username from "../IndexFormComponents/userForm";
 import FullName from "../IndexFormComponents/FullNameForm";
-import Birthdate from "../IndexFormComponents/birthdateForm";
-import Country from "../IndexFormComponents/countryForm";
-import { addOrUpdateAccounts } from "../../accountDataBase/dataBase";
+import Birthdate from '../IndexFormComponents/birthdateForm';
+import Country from '../IndexFormComponents/countryForm';
 
 const FirstStep = () => {
-  let User: string;
+  let AES1:string;
+  let AES2:string;
+  let AES3:string;
+  let AES4:string;
+  let AES5:string;
+
   const router = useRouter();
   const methods = useForm();
 
   const onSubmitNext = methods.handleSubmit((data) => {
-    console.log("Form data:", data);
-    User = data.name;
-    addOrUpdateAccounts(User, data);
-    localStorage.setItem("User", User);
+    AES1 = encrypted_fn(data.name)
+    AES2 = encrypted_fn(data.fullName)
+    AES3 = encrypted_fn(data.birthdate)
+    AES4 = encrypted_fn(data.country)
+    AES5 = encrypted_fn(data.province)
+    let AES_data: any = {AES1, AES2, AES3, AES4, AES5}
+
+    // console_log("Form data:", User);
+    addOrUpdateAccounts(AES1, AES_data);
+    localStorage.setItem("User", AES1);
     router.push("./second-step");
   });
 
