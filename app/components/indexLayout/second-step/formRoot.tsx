@@ -1,35 +1,33 @@
 "use client";
 import { FormProvider, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { addOrUpdateAccounts, encrypted_fn } from "../../accountDataBase/dataBase";
-import Password from '../IndexFormComponents/passwordForm';
+import {
+  addOrUpdateAccounts,
+  encrypted_fn,
+} from "../../accountDataBase/dataBase";
+import Password from "../IndexFormComponents/passwordForm";
 import Mail from "../IndexFormComponents/eMailForm";
 
 const SecondStep = () => {
   let userFromLocalStorage = localStorage.getItem("User");
-  let AES6:string;
-  let AES7:string;
+  let AES6: string;
+  let AES7: string;
   const methods = useForm();
   const router = useRouter();
 
   const onSubmitNext = methods.handleSubmit((data) => {
     console.log("Form data:", data);
-    AES6 = encrypted_fn(data.eMail)
-    AES7 = encrypted_fn(data.password)
-    let AES_data: any = {AES6, AES7}
+    AES6 = encrypted_fn(data.eMail);
+    AES7 = encrypted_fn(data.password);
+    let AES_data: any = { AES6, AES7 };
     if (userFromLocalStorage !== null) {
       addOrUpdateAccounts(userFromLocalStorage, AES_data);
     }
     router.push("./third-step");
   });
 
-  const buttonPrevious = () => {
-    router.push("./first-step");
-  };
-
-  const buttonNext = () => {
-    onSubmitNext();
-  };
+  const buttonPrevious = () => {router.push("./first-step");};
+  const buttonNext = () => {onSubmitNext();};
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-gray-300 to-green-100">

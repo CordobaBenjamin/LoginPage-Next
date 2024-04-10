@@ -32,30 +32,17 @@ const LogginLayout = () => {
 
       console.log("Correct", verifyCounter);
 
-      if (data.eMail == decrypt_AES6_logginData) {
-        setVerifyCounter((verifyCounter) => verifyCounter + 1);
-        console.log("eMailCorrect", verifyCounter);
+      if (
+        data.eMail === decrypt_AES6_logginData &&
+        data.password === decrypt_AES7_logginData
+      ) {
+        // Ambas condiciones son verdaderas
+        alert("You have logged in successfully");
       } else {
-        setVerifyCounter((verifyCounter) => verifyCounter - 1);
-        console.log("eMailWrong", verifyCounter);
-        alert("eMail Wrong");
-      }
-
-      if (data.password == decrypt_AES7_logginData) {
-        setVerifyCounter((verifyCounter) => verifyCounter + 1);
-        console.log("PasswordCorrect", verifyCounter);
-      } else {
-        setVerifyCounter((verifyCounter) => verifyCounter - 1);
-        console.log("PasswordWrong", verifyCounter);
-        alert("Password Wrong");
-      }
-
-      if (verifyCounter === 2) {
-        alert("Account has been create sucesfully");
-        console.log("CorrectVerify", verifyCounter);
+        // Mostrar una alerta indicando que las credenciales son incorrectas
+        alert("eMail or Password Incorrect");
       }
     }
-
   });
 
   const buttonPrevious = () => {

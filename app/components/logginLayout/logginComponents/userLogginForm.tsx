@@ -13,7 +13,6 @@ export const UsernameLoggin = () => {
       <input
         id="Username"
         type="text"
-        placeholder="------------------------------"
         className="block border-b-2 border-gray-400 rounded bg-transparent text-3xl "
         {...register("Username", {
           required: {
